@@ -1,0 +1,176 @@
+---
+- name: Preparación del ambiente
+  hosts: monitoring_server
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Asegurar que Python 3 Pip esté instalado
+      ansible.builtin.package:
+        name: python3-pip
+        state: present
+
+    - name: Instala la biblioteca Docker SDK para Python para Python 3
+      ansible.builtin.pip:
+        name: docker
+        state: present
+
+- name: Configuración del Bastión y Servidor de Monitoreo
+  hosts: all
+  become: true
+  tasks:
+    - name: Configura hostname
+      hostname:
+        name: "{{ inventory_hostname }}"
+
+    - name: Añade el usuario 'admin' al 'Servidor de Monitoreo'
+      user:
+        name: admin
+        group: sudo
+        createhome: yes
+        state: present
+      when: "'monitoring_server' in group_names"
+
+    - name: Añade el usuario 'operator' al 'Servidor de Monitoreo' sin privilegios de sudo
+      user:
+        name: operator
+        createhome: yes
+        state: present
+      when: "'monitoring_server' in group_names"
+
+    - name: Asegura que el usuario 'root' esté deshabilitado en el 'Servidor de Monitoreo'
+      user:
+        name: root
+        password_lock: yes
+      when: "'monitoring_server' in group_names"
+
+    - name: Configuración de interfaces de red y rutas
+      command: echo "Este paso depende de tu configuración específica"
+
+    - name: Instala el paquete NTP
+      package:
+        name: ntp
+        state: present
+
+    - name: Asegura que el servicio NTP esté activo y habilitado
+      service:
+        name: ntp
+        state: started
+        enabled: yes
+
+    - name: Limita acceso SSH solo por la interfaz 'oym' en el Bastión
+      iptables:
+        chain: INPUT  
+        in_interface: oym
+        protocol: tcp
+        destination_port: "22"
+        jump: ACCEPT
+      when: inventory_hostname == 'bastion'
+
+    - name: Deniega todo el acceso SSH que no sea por la interfaz 'oym' en el Bastión
+      iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_port: "22"
+        jump: DROP
+      when: inventory_hostname == 'bastion'
+
+    - name: Permite comunicación específica entre Bastión y Servidor de Monitoreo en la interfaz 'servicio'
+      command: echo "Configura tu regla de firewall aquí"
+      when: "'monitoring_server' in group_names or inventory_hostname == 'bastion'"
+
+    - name: Configura el acceso al puerto 5040/TCP solo en la interfaz 'backup'
+      iptables:
+        chain: INPUT
+        in_interface: backup
+        protocol: tcp
+        destination_port: "5040"
+        jump: ACCEPT
+      when: "'monitoring_server' in group_names or inventory_hostname == 'bastion'"
+
+- name: Configuración de Prometheus
+  hosts: monitoring_server
+  become: true
+  tasks:
+    - name: Crea el directorio de configuración de Prometheus
+      ansible.builtin.file:
+        path: /prometheus/config
+        state: directory
+        mode: '0755'
+
+    - name: Copia el archivo de configuración de Prometheus
+      ansible.builtin.copy:
+        src: /home/christian/prometheus/config/prometheus.yml
+        dest: /prometheus/config/prometheus.yml
+        mode: '0644'
+        remote_src: yes
+
+- name: Despliega Grafana y Prometheus en Docker en el Servidor de Monitoreo
+  hosts: monitoring_server
+  become: true
+  tasks:
+    - name: Elimina el contenedor de Prometheus si ya existe usando comando directo
+      command: docker rm -f prometheus
+      ignore_errors: yes
+
+    - name: "Asegura que el contenedor de Prometheus esté corriendo"
+      community.docker.docker_container:
+        name: prometheus
+        image: "prom/prometheus:v2.22.0"
+        state: started
+        restart_policy: always
+        networks:
+        - name: mi_red_docker
+        ports:
+          - "9090:9090"
+        volumes:
+          - "/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml"
+        recreate: yes
+        force_kill: true
+        pull: yes
+
+    - name: "Elimina el contenedor de Grafana si ya existe"
+      community.docker.docker_container:
+        name: grafana
+        state: absent
+      ignore_errors: yes
+
+    - name: "Asegura que el contenedor de Grafana esté corriendo"
+      community.docker.docker_container:
+        name: grafana
+        image: grafana/grafana
+        ports:
+          - "3000:3000"
+        volumes:
+          - "/home/christian/grafana/data:/var/lib/grafana"
+        restart_policy: unless-stopped
+        networks:
+        - name: mi_red_docker
+        state: started
+        recreate: yes
+      ignore_errors: yes 
+
+
+- name: Configura el script de respaldo en el Bastión
+  hosts: bastion_hosts
+  become: true
+  tasks:
+    - name: Crea el script de respaldo
+      copy:
+        dest: "/usr/local/bin/backup_script.sh"
+        content: |
+          #!/bin/bash
+          DATE=$(date +%Y-%m-%d-%H%M%S)
+          BACKUP_DIR="/var/log/backup/$DATE"
+          mkdir -p "$BACKUP_DIR"
+          rsync -avz /var/log/data "$BACKUP_DIR"
+          echo "Backup realizado el $DATE" >> /var/log/backup.log
+        mode: '0755'
+
+    - name: Programa el script de respaldo para ejecutarse diariamente
+      cron:
+        name: "Tarea de respaldo diario"
+        special_time: daily
+        job: "/usr/local/bin/backup_script.sh"
+        user: root
+

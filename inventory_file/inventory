@@ -1,0 +1,6 @@
+[bastion_hosts]
+bastion ansible_host=127.0.0.1 ansible_connection=local
+
+[monitoring_server]
+grafana ansible_host=127.0.0.1 ansible_connection=local
+prometheus ansible_host=127.0.0.1 ansible_connection=local

@@ -1,0 +1,46 @@
+/home/christian/sys_test/
+├── Captura de pantalla 2024-04-04 120301.png
+├── Diagrama sin título.drawio
+├── README.md
+├── TOPOLOGÍA DE LA SOLUCIÓN.docx
+├── TOPOLOGÍA DE LA SOLUCIÓN.pdf
+├── bastion/
+│   └── Dockerfile
+├── bastion_dockerfile.png
+├── conexion_prometheus_grafana.png
+├── docker_desktop_resources.png
+├── download_node_exporter.png
+├── ejecucion_playbook.png
+├── firewal.png
+├── grafana_monitoreo.png
+├── inventory.png
+├── inventory_file/
+│   └── inventory
+├── ip_bastion.png
+├── monitore_bastion_FAILED.png
+├── monitoreo_grafana.png
+├── monitoreo_prometheus.png
+├── monitoring_server/
+│   └── Dockerfile
+├── monitoring_server_dockerfile.png
+├── prometheus/
+│   ├── config/
+│   │   └── prometheus.yml
+│   ├── node_exporter-1.7.0.linux-amd64/
+│   │   ├── LICENSE
+│   │   ├── NOTICE
+│   │   └── node_exporter*
+│   └── node_exporter-1.7.0.linux-amd64.tar.gz
+├── prometheus.png
+├── setup.yml
+├── system_1.png
+├── system_2.png
+├── system_3.png
+├── system_4.png
+├── system_5.png
+├── target_prometheus.png
+├── target_prometheus_OK.png
+├── topologia.drawio.png
+└── topologia.drawio.png:Zone.Identifier
+
+6 directories, 37 files

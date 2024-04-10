@@ -1,0 +1,102 @@
+<mxfile host="app.diagrams.net" modified="2024-04-07T04:28:34.453Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="t_pLq1CgWDPAvIIhVU54" version="24.2.2" type="github">
+  <diagram name="Página-1" id="ba6RV4f3CP2LsHFtv_WW">
+    <mxGraphModel dx="1221" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <object label="" id="0">
+          <mxCell />
+        </object>
+        <mxCell id="1" parent="0" />
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-31" value="Monitoring Server" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.servers.server_generic;" vertex="1" parent="1">
+          <mxGeometry x="630" y="404" width="140" height="326" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-4" value="OYM" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Network_Interfaces.svg;" vertex="1" parent="1">
+          <mxGeometry x="337.2" y="526.03" width="43" height="37.94" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-5" value="SERVICIO" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Network_Interfaces.svg;" vertex="1" parent="1">
+          <mxGeometry x="344.7" y="646.47" width="38" height="33.53" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-9" value="&lt;font color=&quot;#ffffff&quot;&gt;Prometheus&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;" vertex="1" parent="1">
+          <mxGeometry x="632" y="493" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-10" value="&lt;font color=&quot;#ffffff&quot;&gt;Grafana&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;" vertex="1" parent="1">
+          <mxGeometry x="703" y="493" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-15" value="Monitoring Server" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Monitor.svg;" vertex="1" parent="1">
+          <mxGeometry x="669.5" y="404" width="61" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-16" value="Ansible&lt;div&gt;&amp;nbsp;Playbook&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- name: coinfigutacion de server bastion&lt;/div&gt;&lt;div&gt;-------------&lt;/div&gt;&lt;div&gt;--------------&lt;/div&gt;" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_step_functions_workflow;strokeColor=#545B64;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#545B64;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="328" y="832.4" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-23" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Personal_Computer_with_Server.svg;" vertex="1" parent="1">
+          <mxGeometry x="500" y="866.2" width="62.400000000000006" height="62.400000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-32" value="Bastion Server" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.servers.server_generic;" vertex="1" parent="1">
+          <mxGeometry x="20" y="410" width="135.6" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-38" value="Comunicación con puertos específicos de monitoreo" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="400" y="646.24" width="58" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-40" value="Acceso al puerto 5040/TCP" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="389.4" y="364.99999999999994" width="58" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-42" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="155.5999999999999" y="566.5000394944707" as="sourcePoint" />
+            <mxPoint x="620" y="566.81" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-45" value="Logs de respaldo&lt;div&gt;&amp;nbsp;en /var/log/backug.log&lt;/div&gt;" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="60" y="344" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-53" value="Acceso solo por SSH (PORT 22 con claves privadas)" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="396.2" y="476.94" width="58" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-6" value="Backup&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Network_Interfaces.svg;" vertex="1" parent="1">
+          <mxGeometry x="340" y="418.05" width="36.2" height="31.95" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-55" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="157.7999999999999" y="638.0000394944707" as="sourcePoint" />
+            <mxPoint x="620" y="638" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-60" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="155.5999999999999" y="455.00003949447074" as="sourcePoint" />
+            <mxPoint x="620" y="455.31" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-62" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Script de&lt;/font&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Respaldo&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;DIario&lt;/font&gt;&lt;/div&gt;" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#00188D;shape=mxgraph.azure.script_file" vertex="1" parent="1">
+          <mxGeometry x="50" y="750" width="47" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-64" value="Bastion: 10.0.3.2&lt;div&gt;Monitoreo: 10.0.3.3&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="257.7" y="370" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-65" value="Bastion: 10.0.1.2&amp;nbsp;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Monitoreo: 10.0.1.3&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="251.2" y="476.94" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-66" value="Bastion: 10.0.2.2&lt;div&gt;Monitoreo: 10.0.2.3&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="251.2" y="585" width="125" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-67" value="Ejecuta ek Backup desde 10.0.3.2 hasta 10.0.3.3" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="130" y="745" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-68" value="*admin: Full privilegios&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;*Operator: Privilegios limitados, no sudo Access&lt;/span&gt;&lt;/div&gt;&lt;div&gt;*root: Denegado&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="670" y="770" width="90" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-70" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Mi85YlZI6cHKPXqMDZDM-32" target="Mi85YlZI6cHKPXqMDZDM-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="790" as="sourcePoint" />
+            <mxPoint x="280" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mi85YlZI6cHKPXqMDZDM-71" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Mi85YlZI6cHKPXqMDZDM-16" target="Mi85YlZI6cHKPXqMDZDM-31">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="769.4" as="sourcePoint" />
+            <mxPoint x="657" y="962.4" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
